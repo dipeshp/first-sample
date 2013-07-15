@@ -1,0 +1,29 @@
+<h1>Listing users</h1>
+<%= render_crumbs%>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @u.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.title %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<h1>File Upload</h1>
+<%= form_for :file_upload, :url => { :action => :upload },:html => {:multipart => true} do  |f|%>
+    <%= f.file_field :my_file %>
+      <%= f.submit "Upload" %>
+    <% end %>
+<br />
+<%= paginate @u, :window => 2%>
+<%= link_to 'New User', new_user_path %>

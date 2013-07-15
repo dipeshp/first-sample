@@ -1,0 +1,9 @@
+<h1>Comments#index</h1>
+<p>Find me in app/views/comments/index.html.erb</p>
+<%= render_crumbs%>
+<h1>Comment Details...</h1>
+<% @comment.each do |c|  %>
+  commenter:<%= c.title %></br>
+  comment:<%= c.author %> </br>
+<% end %>
+<%= link_to  'MAIN PAGE', users_path%>
